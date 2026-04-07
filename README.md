@@ -1,75 +1,72 @@
-# 💰 FinTrack: Seu Assistente de Finanças Pessoais (Projeto Mobile Android)
+# 💰 FinTrack: Personal Finance Assistance (Android Mobile Project)
 
-## 🎯 Sobre o Projeto
+## 🎯 About the Project
 
-**FinTrack** é um aplicativo mobile de controle financeiro desenvolvido em **React Native + Expo** para o ambiente Android. O objetivo é fornecer uma ferramenta completa para a gestão de suas finanças pessoais (receitas e despesas), utilizando o **React Context API** para gerenciar o estado global da aplicação e o **Firebase Firestore** para persistência de dados em nuvem com sincronização em tempo real.
+**FinTrack** is a mobile financial control application developed in **React Native + Expo** for the Android environment. The goal is to provide a complete tool for managing personal finances (income and expenses), utilizing the **React Context API** for global state management and **Firebase Firestore** for cloud data persistence with real-time synchronization.
 
-Este projeto foi criado para a disciplina de **Desenvolvimento em Dispositivos Mobile Android**, demonstrando proficiência no uso de tecnologias híbridas e integração com serviços em nuvem para a criação de soluções robustas e escaláveis.
+This project was created for the course **Development on Android Mobile Devices**, demonstrating proficiency in using cross-platform technologies, architectural patterns (DAO), and cloud service integration to create robust and scalable solutions.
 
+### Core Features
 
-### Funcionalidades Essenciais
+The application covers the following key areas:
 
-O aplicativo visa cobrir as seguintes áreas:
-
-1.  **CRUD de Transações:** Adicionar, listar (com ordenação por data), editar e excluir receitas e despesas com sincronização em tempo real.
-2.  **CRUD de Categorias:** Adicionar, editar e excluir categorias personalizadas com ícones do Ionicons.
-3.  **Gestão de Orçamento:** Definir um limite (meta) de gasto por categoria e acompanhar o progresso com uma barra visual e alertas de excedente.
-4.  **Dashboard (Visão Geral):** Exibe o saldo total, receita total e despesa total calculados dinamicamente.
-5.  **Relatórios (Gráficos):** Exibe gráficos de pizza mostrando a distribuição de receitas e despesas do mês atual, além de gráfico de evolução financeira.
-6.  **Persistência em Nuvem:** Utiliza **Firebase Firestore** para salvar todas as transações, categorias e orçamentos com sincronização automática entre dispositivos.
-7.  **Sincronização em Tempo Real:** Alterações nos dados aparecem instantaneamente em todos os dispositivos conectados.
-8.  **Suporte Offline:** O Firestore mantém cache local, permitindo uso offline com sincronização automática ao retornar a conexão.
-
----
- Se estiver lendo pelo VS Code, peço que retire o Alt+z, foi chato de arrumar essa tabela...
----
-
-## 🛠️ Stack Tecnológica
-
-|          Categoria             |           Tecnologia            |                                Justificativa                                                                  |
-|------------------------------- |-------------------------------- |---------------------------------------------------------------------------------------------------------------|
-| **Framework Mobile**           | React Native (com Expo)         | Permite criar aplicativos nativos para Android (e iOS) usando JavaScript.                                     |
-| **Linguagem**                  | JavaScript (ES6+)               | Padrão do React Native.                                                                                       |
-| **Navegação**                  | React Navigation (Tabs & Stack) | Gerencia o fluxo entre as telas (principal e adicionar).                                                      |
-| **Gerenciamento de Estado**    | React Context API               | Usado para centralizar e fornecer o estado global (transações, categorias, orçamentos) e as funções de CRUD.  |
-| **Backend/Database**           | Firebase Firestore              | Banco de dados NoSQL em nuvem com sincronização em tempo real e suporte offline.                              |
-| **Camada de Acesso a Dados**   | Padrão DAO (Data Access Object) | Isola a lógica de acesso ao banco em módulos dedicados (CategoriaDAO, TransacaoDAO, OrcamentoDAO, MetaDAO).   |
-| **Autenticação**               | Firebase Authentication         | (Planejado para versão futura) Gerenciamento de usuários e controle de acesso.                                |
-| **Hosting**                    | Firebase Hosting                | Deploy da versão web do aplicativo.                                                                           | 
-| **Visualização**               | `react-native-chart-kit`        | Biblioteca para criar gráficos de pizza e linha.                                                              | 
-| **Componentes de UI**          | `@react-native-picker/picker`   | Componente nativo para seleção de categorias nos formulários.                                                 |
-| **Ícones**                     | `@expo/vector-icons` (Ionicons) | Biblioteca de ícones vetoriais para categorias e interface.                                                   |
+1. **Transaction CRUD:** Add, list (ordered by date), edit, and delete incomes and expenses with real-time synchronization.
+2. **Category CRUD:** Add, edit, and delete custom categories using Ionicons.
+3. **Budget Management:** Set spending limits (goals) per category and track progress with a visual progress bar and over-limit alerts.
+4. **Dashboard (Overview):** Dynamically displays total balance, total income, and total expenses.
+5. **Reports & Charts:** Features pie charts showing the distribution of income and expenses for the current month, as well as a financial evolution line chart.
+6. **Cloud Persistence:** Uses **Firebase Firestore** to securely save all transactions, categories, and budgets.
+7. **Real-time Synchronization:** Data changes appear instantly across all connected devices.
+8. **Offline Support:** Firestore maintains a local cache, allowing offline use with automatic sync once the connection is restored.
 
 ---
 
-## 🚀 Como Rodar o Projeto (Ambiente de Desenvolvimento)
+## 🛠️ Tech Stack
 
-### Pré-requisitos
+| Category | Technology | Justification |
+| :--- | :--- | :--- |
+| **Mobile Framework** | React Native (with Expo) | Allows building native apps for Android (and iOS) using JavaScript. |
+| **Language** | JavaScript (ES6+) | The standard for React Native development. |
+| **Navigation** | React Navigation | Manages the flow between screens (Tabs & Stacks). |
+| **State Management** | React Context API | Centralizes and provides global state (transactions, categories) and CRUD functions. |
+| **Backend/Database** | Firebase Firestore | Cloud NoSQL database with real-time sync and offline support. |
+| **Data Access Layer** | DAO Pattern | Isolates database access logic into dedicated modules (e.g., `CategoriaDAO`). |
+| **Authentication** | Firebase Auth | *(Planned)* User management and access control. |
+| **Hosting** | Firebase Hosting | Deployment for the web version of the application. |
+| **Visualization** | `react-native-chart-kit` | Library for creating interactive pie and line charts. |
+| **UI Components** | `@react-native-picker/picker` | Native component for category selection in forms. |
+| **Icons** | `@expo/vector-icons` | Vector icon library (Ionicons) for the user interface. |
 
-Certifique-se de ter os seguintes softwares instalados:
+---
 
-1.  **Node.js (LTS):** Ambiente de execução JavaScript - [Download](https://nodejs.org/)
-2.  **npm** (ou Yarn): Gerenciador de pacotes (vem com Node.js)
-3.  **Expo CLI (Globalmente):** `npm install -g expo-cli`
-4.  **Visual Studio Code (VS Code):** Editor de código recomendado
-5.  **App Expo Go:** Instalado no seu celular Android (Google Play Store) ou em um emulador Android
-6.  **Conta Google/Firebase:** Para configurar o projeto no Firebase Console
+## 🚀 How to Run the Project
 
-### Configuração do Firebase
+### Prerequisites
 
-1.  **Crie um projeto no [Firebase Console](https://console.firebase.google.com/)**
-2.  **Ative o Firestore Database:**
-    - Vá em "Build" → "Firestore Database" → "Create database"
-    - Escolha modo de teste (temporariamente) ou configure as regras de segurança
-3.  **Registre o app Web:**
-    - Em "Project Overview" → "Add app" → selecione Web (</>)
-    - Copie as credenciais do `firebaseConfig`
-4.  **Configure as credenciais:**
-    - Abra o arquivo `config/firebaseConfig.js`
-    - Substitua as credenciais placeholder pelas suas credenciais reais do Firebase
-5.  **Configure as Regras do Firestore (opcional):**
-    - No Firebase Console, vá em "Firestore Database" → "Rules"
-    - Para desenvolvimento, use:
+Ensure you have the following installed:
+
+1. **Node.js (LTS):** JavaScript runtime environment - [Download](https://nodejs.org/)
+2. **npm** (or Yarn): Package manager (comes with Node.js)
+3. **Expo CLI (Globally):** `npm install -g expo-cli`
+4. **Visual Studio Code (VS Code):** Recommended code editor
+5. **Expo Go App:** Installed on your Android phone (Google Play Store) or on an Android emulator
+6. **Google/Firebase Account:** To set up the project in the Firebase Console
+
+### Firebase Setup
+
+1. **Create a project in the [Firebase Console](https://console.firebase.google.com/).**
+2. **Enable Firestore Database:**
+   - Go to "Build" → "Firestore Database" → "Create database".
+   - Choose Test Mode (temporarily) or configure your security rules.
+3. **Register the Web App:**
+   - Go to "Project Overview" → "Add app" → Select Web (`</>`).
+   - Copy the `firebaseConfig` credentials.
+4. **Configure Credentials:**
+   - Open the `config/firebaseConfig.js` file in the project.
+   - Replace the placeholder credentials with your actual Firebase credentials.
+5.  **Configure Firestore Rules (optional):**
+   - In the Firebase Console, go to "Firestore Database" → "Rules"
+   - For development, use:
       ```javascript
       rules_version = '2';
       service cloud.firestore {
@@ -80,120 +77,120 @@ Certifique-se de ter os seguintes softwares instalados:
         }
       }
       ```
-    - **⚠️ Importante:** Para produção, implemente regras de segurança adequadas
+   - **⚠️ Important:** For production, implement appropriate security rules
 
-### Passos de Execução
+### Execution Steps
 
-1.  **Clone o Repositório:**
+1.  **Clone the Repository:**
     ```bash
-    git clone [LINK DO SEU REPOSITÓRIO]
-    cd controle-financas
+    git clone https://github.com/Lorenzo-Zagallo/react-native-fintrack.git
+    cd react-native-fintrack
     ```
 
-2.  **Instale as Dependências:**
+2.  **Install Dependencies:**
     ```bash
     npm install
     ```
 
-3.  **Configure o Firebase:**
-    - Edite `config/firebaseConfig.js` com suas credenciais
+3.  **Configure Firebase:**
+    - Edit `config/firebaseConfig.js` with your credentials
 
-4.  **Inicie o Servidor de Desenvolvimento:**
+4.  **Start the Development Server:**
     ```bash
     npm start
     ```
-    ou para limpar o cache:
+    or to clear the cache:
     ```bash
     npm start -c
     ```
 
-5.  **Execute no Dispositivo/Emulador Android:**
+5.  **Run on Android Device/Emulador:**
 
-    * **No Celular Android:** Abra o aplicativo **Expo Go** e escaneie o QR Code exibido no terminal
-    * **No Emulador Android:** Pressione a letra `a` no terminal onde o Expo está rodando
-    * **No Navegador Web:** Pressione a letra `w` no terminal (apenas para testes, algumas funcionalidades nativas podem não funcionar)
+    * **Android Device:** Open the **Expo Go** app and scan the QR Code displayed in the terminal.
+    * **Android Emulator:** Press `a` in the terminal where Expo is running.
+    * **Web Navigator:** Press `w` in the terminal (for testing purposes only, some native features may not work)
 
-### Comandos Úteis
+### Useful Commands
 
 ```bash
-npm start          # Inicia o servidor de desenvolvimento
-npm start -c       # Inicia com cache limpo
-npx expo start     # Alternativa ao npm start
+npm start          # Starts the development server
+npm start -c       # Starts with a clean cache
+npx expo start     # Alternative to npm start
 ```
 
-### Solução de Problemas
+### Troubleshooting
 
-- **Erro de conexão com Firebase:** Verifique se as credenciais em `firebaseConfig.js` estão corretas
-- **Erro de cache:** Execute `npm start -c` para limpar o cache do Metro Bundler
-- **QR Code não funciona:** Certifique-se de que o celular e o computador estão na mesma rede Wi-Fi
-- **Dependências faltando:** Delete `node_modules` e `package-lock.json`, depois execute `npm install` novamente
+- **Firebase connection error:** Verify that the credentials in `firebaseConfig.js` are correct.
+- **Cache error:** Run `npm start -c` to clear the Metro Bundler cache.
+- **QR Code not working:** Make sure your phone and computer are on the same Wi-Fi network.
+- **Missing dependencies:** Delete `node_modules` and `package-lock.json`, then run `npm install` again.
 
 ---
 
-## 📂 Estrutura de Pastas
+## 📂 Folder Structure
 
 ```
 .
-├── assets/             # Ícones, fontes e imagens estáticas 
-├── config/             # Configuração do Firebase
+├── assets/             # Icons, fonts, and static images
+├── config/             # Firebase configuration
 │   └── firebaseConfig.js
-├── context/            # Lógica para gerenciamento de estado global 
+├── context/            # Global state management logic
 │   └── ContextoFinancas.js
-├── dao/                # Camada de acesso ao banco de dados (Data Access Object)
+├── dao/                # Data Access Object layer
 │   ├── CategoriaDAO.js
 │   ├── TransacaoDAO.js
 │   ├── OrcamentoDAO.js
 │   └── MetaDAO.js
-├── navigation/         # Configuração da navegação (Tabs e Stacks)
+├── navigation/         # Navigation setup (Tabs and Stacks)
 │   ├── TabNavigation.js
 │   ├── StackTransacao.js
 │   ├── StackOrcamento.js
 │   ├── StackPainel.js
 │   └── StackRelatorio.js
-├── screens/            # Telas principais e formulários
-│   ├── Dashboard/      # Tela principal com resumo financeiro
+├── screens/            # Main application screens and forms
+│   ├── Dashboard/      # Main overview screen
 │   │   └── TelaPainel.js
-│   ├── Transactions/   # Gestão de transações
+│   ├── Transactions/   # Transaction management
 │   │   ├── TelaTransacao.js
 │   │   └── TelaAddTransacao.js
-│   ├── Budgets/        # Gestão de orçamentos e categorias
+│   ├── Budgets/        # Budget and category management
 │   │   ├── TelaOrcamento.js
 │   │   └── TelaAddCategoria.js
-│   └── Reports/        # Gráficos e relatórios
+│   └── Reports/        # Charts and financial reports
 │       └── TelaRelatorio.js
-├── .firebaserc         # Configuração do projeto Firebase
-├── firebase.json       # Configuração do Firebase Hosting
-├── App.js              # Ponto de entrada principal
-├── index.js            # Bootstrap do aplicativo
-└── package.json        # Dependências e scripts do projeto
+├── .firebaserc         # Firebase project configuration
+├── firebase.json       # Firebase Hosting configuration
+├── App.js              # Main entry point
+├── index.js            # Application bootstrap
+└── package.json        # Project dependencies
 ```
 
 ---
 
-## 🔥 Arquitetura do Projeto
+## 🔥 Project Architecture
 
-### Padrão DAO (Data Access Object)
+### DAO Pattern (Data Access Object)
 
-O projeto implementa o padrão **DAO** para separar a lógica de negócio da lógica de acesso aos dados:
+The project implements the **DAO** pattern to separate business logic from data access logic, ensuring clean architecture:
 
-- **CategoriaDAO.js**: CRUD de categorias (adicionar, atualizar, apagar, ouvir)
-- **TransacaoDAO.js**: CRUD de transações com ordenação por data
-- **OrcamentoDAO.js**: CRUD de orçamentos por categoria
-- **MetaDAO.js**: CRUD de metas financeiras
+- **CategoriaDAO.js**: CRUD for categories (add, update, delete, listen)
+- **TransacaoDAO.js**: CRUD for transactions sorted by date
+- **OrcamentoDAO.js**: CRUD for budgets by category
+- **MetaDAO.js**: CRUD for financial goals
 
-### Fluxo de Dados
+### Real-Time Data Flow
 
-1. **UI (Screens)** → dispara ação (ex: adicionar transação)
-2. **Context (ContextoFinancas.js)** → valida e chama o DAO apropriado
-3. **DAO** → executa operação no Firestore (addDoc, updateDoc, deleteDoc)
-4. **Firestore** → persiste os dados e notifica os listeners
-5. **DAO (onSnapshot)** → detecta mudança e chama callback
-6. **Context** → atualiza estado global (setState)
-7. **UI** → re-renderiza automaticamente com os novos dados
+1. **UI (Screens)** → triggers an action (e.g., Add Transaction).
+2. **Context (ContextoFinancas.js)** → validates the input and calls the appropriate DAO.
+3. **DAO** → executes the operation on Firestore (`addDoc`, `updateDoc`, `deleteDoc`)
+4. **Firestore** → persists the data and notifies all active listeners.
+5. **DAO (`onSnapshot`)** → detects the change and triggers a callback.
+6. **Context** → updates the global state (`setState`).
+7. **UI** → automatically re-renders with the fresh data.
 
-### Sincronização em Tempo Real
+### Real-Time Synchronization
 
-O Context estabelece **listeners** (via `onSnapshot`) para todas as coleções do Firestore:
+The Context establishes **listeners** (via `onSnapshot`) for all Firestore collections:
 
 ```javascript
 useEffect(() => {
@@ -209,132 +206,130 @@ useEffect(() => {
 }, []);
 ```
 
-Qualquer alteração no banco (de qualquer dispositivo) atualiza automaticamente todos os clientes conectados.
+Any change to the database (from any device) automatically updates all connected clients.
 
 ---
 
-## 🗄️ Estrutura do Banco de Dados (Firebase Firestore)
+## 🗄️ Database Structure (Firebase Firestore)
 
-### Coleções:
+### Collections:
 
 #### 1. `categorias`
 ```javascript
 {
-  id: "auto-gerado",        // ID único do Firestore
-  nome: "Alimentação",      // Nome da categoria
+  id: "auto-gerado",        // Unique Firestore ID
+  nome: "Alimentação",      // Category name
   tipo: "expense",          // "income" | "expense"
-  cor: "#FF6384"           // Cor para gráficos (hex)
+  cor: "#FF6384"            // Color for graphics (hex)
 }
 ```
 
 #### 2. `transacoes`
 ```javascript
 {
-  id: "auto-gerado",        // ID único do Firestore
+  id: "auto-gerado",        // Unique Firestore ID
   tipo: "expense",          // "income" | "expense"
-  valor: 150.50,            // Valor da transação
-  descricao: "Almoço",      // Descrição
-  categoriaId: "ref-id",    // Referência à categoria
-  data: "2025-11-24"        // Data formato YYYY-MM-DD
+  valor: 150.50,            // Transaction value
+  descricao: "Almoço",      // Description
+  categoriaId: "ref-id",    // Category reference
+  data: "2025-11-24"        // Date format YYYY-MM-DD
 }
 ```
 
 #### 3. `orcamentos`
 ```javascript
 {
-  id: "categoria-id",       // ID da categoria (documento)
-  categoriaId: "ref-id",    // Referência à categoria
-  valorLimite: 500.00       // Limite de gasto
+  id: "categoria-id",       // Category ID (document)
+  categoriaId: "ref-id",    // Category reference
+  valorLimite: 500.00       // Spending limit
 }
 ```
 
 #### 4. `metas`
 ```javascript
 {
-  id: "auto-gerado",        // ID único do Firestore
-  nome: "Viagem 2025",      // Nome da meta
-  descricao: "...",         // Descrição detalhada
-  valorAlvo: 5000.00,       // Valor objetivo
-  valorAtual: 1200.00,      // Valor já economizado
-  prazo: "2025-12-31"       // Data limite
+  id: "auto-gerado",        // Unique Firestore ID
+  nome: "Viagem 2025",      // Goal name
+  descricao: "...",         // Detailed description
+  valorAlvo: 5000.00,       // Target value
+  valorAtual: 1200.00,      // Amount already saved
+  prazo: "2025-12-31"       // Deadline
 }
 ```
 
 ---
 
-## 🎨 Funcionalidades Detalhadas
+## 🎨 Detailed Features Detalhadas
 
-### 1. Gestão de Transações
-- ✅ Adicionar receitas e despesas com validação de campos
-- ✅ Listar todas as transações ordenadas por data (mais recentes primeiro)
-- ✅ Editar transações existentes
-- ✅ Excluir transações com confirmação
-- ✅ Filtro por categoria no picker (apenas categorias do tipo selecionado)
-- ✅ Máscara de entrada de data (DD/MM/AAAA)
+### 1. Transaction Management
+- ✅ Add income and expenses with field validation
+- ✅ List all transactions sorted by date (newest first)
+- ✅ Edit existing transactions
+- ✅ Delete transactions with confirmation
+- ✅ Filter by category in the picker (only categories of the selected type)
+- ✅ Date input mask (DD/MM/YYYY)
 
-### 2. Gestão de Categorias
-- ✅ Criar categorias personalizadas (receita ou despesa)
-- ✅ Seleção de ícones do Ionicons
-- ✅ Edição de categorias existentes
-- ✅ Deleção em cascata (remove transações e orçamentos associados)
-- ✅ Validação de duplicidade de nomes
+### 2. Category Management
+- ✅ Create custom categories (income or expense)
+- ✅ Ionicons icon selection
+- ✅ Edit existing categories
+- ✅ Cascading deletion (removes transactions and associated budgets)
+- ✅ Duplicate name validation
 
-### 3. Gestão de Orçamentos
-- ✅ Definir limite de gastos por categoria
-- ✅ Barra de progresso visual (% gasto vs. orçamento)
-- ✅ Alertas visuais (80% = amarelo, >100% = vermelho)
-- ✅ Cálculo automático de gastos por categoria no mês atual
+### 3. Budget Management
+- ✅ Set spending limit per category
+- ✅ Visual progress bar (% spent vs. budget)
+- ✅ Visual alerts (80% = yellow, >100% = red)
+- ✅ Automatic calculation of expenses by category in the current month
 
 ### 4. Dashboard
-- ✅ Saldo total (receitas - despesas)
-- ✅ Total de receitas do período
-- ✅ Total de despesas do período
-- ✅ Atualização em tempo real
+- ✅ Total balance (income - expenses)
+- ✅ Total income for the period
+- ✅ Total expenses for the period
+- ✅ Real-time updates
 
-### 5. Relatórios e Gráficos
-- ✅ Gráfico de pizza: distribuição de despesas por categoria (mês atual)
-- ✅ Gráfico de pizza: distribuição de receitas por categoria (mês atual)
-- ✅ Gráfico de linha: evolução financeira (últimos 6 meses)
-- ✅ Cores personalizadas por categoria
-
----
-
-## 🔒 Segurança e Boas Práticas
-
-### Implementado:
-- ✅ Validação de entrada em todos os formulários
-- ✅ Tratamento de erros com try/catch em operações Firebase
-- ✅ Estado de erro global (`erro`) exposto no Context
-- ✅ Normalização de valores numéricos antes de salvar
-- ✅ Deleção em cascata para manter consistência de dados
-
-### A Implementar (Roadmap):
-- 🔜 Firebase Authentication (login com Google/email)
-- 🔜 Regras de segurança do Firestore (acesso apenas aos próprios dados)
-- 🔜 Validação de permissões por usuário
-- 🔜 Criptografia de dados sensíveis
-- 🔜 Rate limiting e proteção contra abuso
+### 5. Reports and Graphs
+- ✅ Pie chart: distribution of expenses by category (current month)
+- ✅ Pie chart: distribution of income by category (current month)
+- ✅ Line graph: financial evolution (last 6 months)
+- ✅ Custom colors by category
 
 ---
 
-## 👥 Equipe de Desenvolvimento
+## 🔒 Security and Best Practices
 
-### **Matheus Almeida**
-- 🔥 Integração completa com Firebase (Firestore + Hosting)
-- 🗄️ Implementação do padrão DAO
-- 🔄 Migração de AsyncStorage para Firebase
-- 📊 Sistema de sincronização em tempo real
-- 📝 Documentação técnica e relatório de extensão
+### Implemented:
+
+- ✅ Input validation in all forms
+- ✅ Error handling with try/catch in Firebase operations
+- ✅ Global error state (`error`) exposed in the Context
+- ✅ Normalization of numeric values ​​before saving
+- ✅ Cascading deletion to maintain data consistency
+
+### To Implement (Roadmap):
+- 🔜 Firebase Authentication (login with Google/email)
+- 🔜 Firestore security rules (access only to own data)
+- 🔜 User permission validation
+- 🔜 Encryption of sensitive data
+- 🔜 Rate limiting and abuse protection
+
+---
+
+## 👥 Development Team
 
 ### **Lorenzo Zagallo**
-- 🎨 Desenvolvimento do Frontend e Interface de Usuário
-- 📱 Implementação das telas e navegação
-- 🎯 Lógica de apresentação e componentes visuais
-- 💡 UX/UI Design e usabilidade
+- Frontend & User Interface Development
+- Screen implementation and navigation flow
+- Presentation logic and UI/UX Design
+
+### **Matheus Almeida**
+- Full Firebase integration (Firestore + Hosting)
+- Implementation of the DAO architecture
+- Real-time synchronization and documentation
 
 ---
 
-## 📚 Recursos e Documentação
+## 📚 Resources and Documentation
 
 - [React Native Documentation](https://reactnative.dev/)
 - [Expo Documentation](https://docs.expo.dev/)
@@ -344,17 +339,17 @@ Qualquer alteração no banco (de qualquer dispositivo) atualiza automaticamente
 
 ---
 
-## 📄 Licença
+## 📄 License & Credits
 
-Este projeto foi desenvolvido para fins acadêmicos na disciplina de **Programação Para Dispositivos Móveis em Android**.
+This project was developed for academic purposs during the **Mobile Device Programming (Android)** course at UNESA (2025).
 
 ---
 
-## 👨‍💻 Contato e Autor
+## 👨‍💻 Contact and Author
 
-* **Alunos:** Lorenzo Zagallo & Matheus Fonseca
-* **Disciplina:** Programação Para Dispositivos Móveis em Android
-* **Instituição:** UNESA - Universidade Estácio de Sá
-* **Ano:** 2025
+* **Students:** Lorenzo Zagallo & Matheus Fonseca
+* **Subject:** Programação Para Dispositivos Móveis em Android
+* **Institution:** UNESA - Universidade Estácio de Sá
+* **Year:** 2025
   
-Este projeto não está mais em desenvolvimento. Contribuições, sugestões e críticas construtivas são bem-vindas!
+This project is no longer under development. Contributions, suggestions, and constructive criticism are welcome!
